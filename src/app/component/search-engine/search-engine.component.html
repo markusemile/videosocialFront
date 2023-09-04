@@ -1,0 +1,9 @@
+<div class="container p-1">
+  <h2>Search a new movie</h2>
+  <div class="filter-container test-1" [ngStyle]=" {marginBottom:'10px',borderRadius:'10px'}">
+    <app-filter [fields]=" fieldsToFilter" (filterDatas)="search($event)"></app-filter>
+  </div>
+  <div class="movie-list-container" *ngIf="searchPage!==undefined">
+    <app-movielist [page]="searchPage"></app-movielist>
+  </div>
+</div>

@@ -1,0 +1,45 @@
+.container {
+  margin: 1vh 2vw;
+}
+.searchEngine-container {
+  position: absolute;
+  top: 10vh;
+  left: 10vw;
+  right: 10vw;
+  bottom: 10vh;
+
+  padding: 10px;
+
+  border-radius: 10px;
+  border: 10px;
+  border-style: solid;
+  border-color: #fff;
+  color: $primary-color;
+}
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.justify-conent-center {
+  justify-content: center !important;
+}
+
+.w-full {
+  width: 100%t;
+}
+.d-flex {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.align-center {
+  align-items: center;
+}

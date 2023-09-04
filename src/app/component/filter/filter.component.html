@@ -1,0 +1,39 @@
+<form #myform="ngForm" [formGroup]="formGroup">
+  <div class=" flex-column ">
+    <div class=" d-flex align-center">
+
+      <div class="d-flex mr-2">
+        <h4>Filter your search :</h4>
+      </div>
+
+      <div class="card d-flex justify-content-center mr-3" *ngIf="fields.includes('include_adult')">
+        <p-checkbox [binary]="true" inputId="binary" name="include_adult" formControlName="include_adult"></p-checkbox>
+        <label [ngStyle]="{marginLeft:'10px'}">Includ Adult Movie</label>
+      </div>
+
+      <div class="card d-flex justify-content-center">
+        <p-treeSelect class="md:w-20rem w-full" selectionMode="single" [options]="nodes" name="year"
+          formControlName="year" placeholder="Year"></p-treeSelect>
+        <div *ngIf=" formGroup.get('year')?.value!==null && formGroup.get('year')?.dirty" class="ml-2">
+          <p-button styleClass="p-button-warning p-button-sm" (click)="resetYear()">X</p-button>
+        </div>
+      </div>
+
+      <div class="card d-flex align-center">
+        <label class="mx-2">Source :</label>
+        <p-selectButton [options]="sourceMovieDb" value='true' optionLabel="label" formControlName="sourceLocal"
+          optionValue="value"></p-selectButton>
+      </div>
+    </div>
+    <div class="px-2">
+      <hr class="border-dark">
+    </div>
+    <div class="d-flex w-full">
+      <input type=" text" pInputText name="query" placeholder="search title" formControlName="query"
+        [ngStyle]="{width:'90%',marginBottom:'20px'}" />
+      <p-button icon=" pi pi-search" styleClass="ml-2 bg-dark" (click)="search()" [disabled]="
+        !formGroup.valid"></p-button>
+
+    </div>
+  </div>
+</form>
