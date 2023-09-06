@@ -37,7 +37,6 @@ export class FilterComponent {
   }
 
   search() {
-
     let datas = JSON.stringify(this.formGroup.value);
     this.filterDatas.emit(JSON.parse(datas));
 

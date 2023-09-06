@@ -21,6 +21,18 @@ export const environment = {
     movieMedia: { path: "../../../media/movie", subfolder: ["original", "thumb"] },
     collectionMedia: { path: "../../../media/collection", subfolder: ["original", "thumb"] }
   },
+  mdbMedia: {
+    portrait138_175: "https://www.themoviedb.org/t/p/w138_and_h175_face",
+    portrait220_330: "https://www.themoviedb.org/t/p/w220_and_h330_face",
+    portrait300_450: "https://www.themoviedb.org/t/p/w300_and_h450_bestv2",
+    portrait600_900: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2",
+    landscape500_285: "https://www.themoviedb.org/t/p/w500_and_h282_face",
+    original: "https://www.themoviedb.org/t/p/original",
+    people: "https://www.themoviedb.org/t/p/w66_and_h66_face",
+
+
+
+  },
   moviedb: {
     api: {
       searchMovie: {

@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SearchEngineComponent } from './search-engine.component';
-import { FilterComponent } from '../filter/filter.component';
+
+import { ScrollPanelModule } from 'primeng/scrollpanel'; import 'primeng/scrollpanel'
+
 import { FilterModule } from '../filter/filter.module';
-import { MovielistComponent } from '../movielist/movielist.component';
 import { MovielistModule } from '../movielist/movielist.module';
 
+import { SearchEngineComponent } from './search-engine.component';
 
 @NgModule({
   declarations: [
@@ -14,10 +15,12 @@ import { MovielistModule } from '../movielist/movielist.module';
   imports: [
     CommonModule,
     FilterModule,
-    MovielistModule
+    MovielistModule,
+    ScrollPanelModule
   ], exports: [
 
-    SearchEngineComponent
+    SearchEngineComponent,
+    ScrollPanelModule
   ]
 })
 export class SearchEngineModule { }

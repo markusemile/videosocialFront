@@ -13,12 +13,11 @@ import { HeaderInterceptor } from './config/headerInterceptor';
 
 
 
-
-
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+
 
 
   ],
@@ -31,9 +30,6 @@ import { HeaderInterceptor } from './config/headerInterceptor';
     NavigationModule,
     HomeModule,
     HttpClientModule,
-
-
-
 
 
 

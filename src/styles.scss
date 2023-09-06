@@ -1,8 +1,10 @@
 @import "./theme.css";
+@import "primeflex/primeflex.scss";
 @import "primeicons/primeicons.css";
 @import "primeng/resources/primeng.css";
 @import url("./assets/styles/color.scss");
 @import url("./assets/styles/layout.scss");
+@import url("./assets/styles/custom_primeng.scss");
 
 @font-face {
   font-family: RobotoCond;
@@ -36,38 +38,38 @@ $padding-directions: ("p", "px", "py", "pr", "pl", "pb", "pt");
   @each $direction in $margin-directions {
     .#{$direction}-#{$i} {
       @if $direction == "m" {
-        margin: #{$i * 10}px;
+        margin: #{$i * 5}px;
       } @else if $direction == "mx" {
-        margin: 0 #{$i * 10}px;
+        margin: 0 #{$i * 5}px;
       } @else if $direction == "my" {
-        margin: #{$i * 10}px 0;
+        margin: #{$i * 5}px 0;
       } @else if $direction == "mr" {
-        margin-right: #{$i * 10}px;
+        margin-right: #{$i * 5}px;
       } @else if $direction == "ml" {
-        margin-left: #{$i * 10}px;
+        margin-left: #{$i * 5}px;
       } @else if $direction == "mb" {
-        margin-bottom: #{$i * 10}px;
+        margin-bottom: #{$i * 5}px;
       } @else if $direction == "mt" {
-        margin-top: #{$i * 10}px;
+        margin-top: #{$i * 5}px;
       }
     }
   }
   @each $direction in $padding-directions {
     .#{$direction}-#{$i} {
       @if $direction == "p" {
-        padding: #{$i * 10}px;
+        padding: #{$i * 5}px;
       } @else if $direction == "px" {
-        padding: 0 #{$i * 10}px;
+        padding: 0 #{$i * 5}px;
       } @else if $direction == "py" {
-        padding: #{$i * 10}px 0;
+        padding: #{$i * 5}px 0;
       } @else if $direction == "pr" {
-        padding-right: #{$i * 10}px;
+        padding-right: #{$i * 5}px;
       } @else if $direction == "pl" {
-        padding-left: #{$i * 10}px;
+        padding-left: #{$i * 5}px;
       } @else if $direction == "pb" {
-        padding-bottom: #{$i * 10}px;
+        padding-bottom: #{$i * 5}px;
       } @else if $direction == "pt" {
-        padding-top: #{$i * 10}px;
+        padding-top: #{$i * 5}px;
       }
     }
   }

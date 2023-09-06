@@ -18,6 +18,8 @@ export class SearchEngineComponent {
   searchPage!: ModelSearchResponse | null;
   private searchMovieSub: Subscription | undefined
 
+  private params: HttpParams = new HttpParams();
+
 
   @Input("filterTag") filterTag: string = "movie";
 
@@ -29,7 +31,9 @@ export class SearchEngineComponent {
 
 
   ngOnInit(): void {
+
     this.fieldsToFilter = this.getFiltersParams(this.filterTag);
+
   }
 
 
@@ -55,34 +59,52 @@ export class SearchEngineComponent {
 
   search(d: FilterResponseModel) {
 
-    let params: HttpParams = new HttpParams();
-    params = params.append("include_adult", d.include_adult);
-    params = params.append("query", d.query);
-    if (d.year !== null && d.year?.data !== null && d.year != undefined && d.year.data != '' && d.year.data != undefined)
-      params = params.append("year", d.year.data)
 
+    this.params = this.params.append("include_adult", d.include_adult);
+    this.params = this.params.append("query", d.query);
+    console.log("-----------------");
+    console.log(d);
+    console.log("-----------------");
+
+
+    this.params = (d.year !== null && d.year?.data !== null && d.year != undefined && d.year.data != '' && d.year.data != undefined) ?
+      this.params = this.params.append("year", d.year.data) : this.params.delete("year");
 
     const source = (d.sourceLocal === "true") ? "local" : "movieDb";
 
+    console.log(this.params);
 
     if (source === "local") {
 
     } else {
 
-      this.searchMovieSub = this.mdbService.searchMovie(params).subscribe({
+      this.searchMovieSub = this.mdbService.searchMovie(this.params).subscribe({
         next: (n: ModelSearchResponse) => {
           this.searchPage = n;
-          console.log(this.searchPage);
-
         }, error: (e: Error) => console.error(e.message)
       })
     }
 
   }
+
+
+  callPage(page: number) {
+    const p = page + 1;
+    this.params = this.params.append("page", p);
+    this.searchMovieSub = this.mdbService.searchMovie(this.params).subscribe({
+      next: (n: ModelSearchResponse) => {
+        this.searchPage = n;
+      }, error: (e: Error) => console.error(e.message)
+    })
+
+  }
+
   ngOnDestroy() {
     if (this.searchMovieSub) {
       this.searchMovieSub.unsubscribe();
     }
   }
+
+
 
 }
