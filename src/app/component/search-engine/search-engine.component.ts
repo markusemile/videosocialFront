@@ -62,10 +62,6 @@ export class SearchEngineComponent {
 
     this.params = this.params.append("include_adult", d.include_adult);
     this.params = this.params.append("query", d.query);
-    console.log("-----------------");
-    console.log(d);
-    console.log("-----------------");
-
 
     this.params = (d.year !== null && d.year?.data !== null && d.year != undefined && d.year.data != '' && d.year.data != undefined) ?
       this.params = this.params.append("year", d.year.data) : this.params.delete("year");

@@ -16,9 +16,11 @@ export const environment = {
   production: false,
   debugger: true,
   localFolder: {
-    actorMedia: { path: "../../../media/actor", subfolder: ["original", "thumb", "square"] },
+    actorMedia: { path: "media/actor", subfolder: ["original", "thumb", "square"] },
     castMedia: { path: "../../../media/cast", subfolder: ["original", "thumb", "square"] },
-    movieMedia: { path: "../../../media/movie", subfolder: ["original", "thumb"] },
+    movieMedia: {
+      path: "E:/PROJET PERSONNEL/videosTEK/media/movie/", subfolder: { original: "original", thumb: "thumb", w220h330: "220_330" }
+    },
     collectionMedia: { path: "../../../media/collection", subfolder: ["original", "thumb"] }
   },
   mdbMedia: {
@@ -29,8 +31,6 @@ export const environment = {
     landscape500_285: "https://www.themoviedb.org/t/p/w500_and_h282_face",
     original: "https://www.themoviedb.org/t/p/original",
     people: "https://www.themoviedb.org/t/p/w66_and_h66_face",
-
-
 
   },
   moviedb: {

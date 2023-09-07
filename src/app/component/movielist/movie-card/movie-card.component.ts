@@ -20,7 +20,14 @@ export class MovieCardComponent {
   @Input() movie!: ModelSearchMovieModel;
 
   ngOnInit(): void {
-    this.src = environment.mdbMedia.portrait220_330 + this.movie.poster_path;
+    if (this.movie.poster_path !== null) {
+      this.src = environment.mdbMedia.portrait220_330 + this.movie.poster_path;
+    } else {
+      this.src = "http://markusemile.be/app/svideo/media/movie/220_330/null.jpg";
+
+
+    }
+
     console.log(this.src);
 
   }
