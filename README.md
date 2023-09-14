@@ -1,19 +1,39 @@
 # VideoSocial
 
-A project including a frontend part in angular and a backend part in java (spring boot)
+- A project including a frontend part in Angular and a backend part in Java (spring boot)
 
-Application that gives the possibility to create this video library (crud part) and to share it with other members.
+- Application which allows you to create your video library (crud part) and share it with other members.
 
-Leave conversations around a movie, aso...
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- Conversations around a film,
+
+- Search movie with filters locally and on  themoviedb.org
+
+- Add your own movie card if you can t find it locally or on  themoviedb.org
+
+- Profile management
+
+- Monitoring of backup of film additions in the database
+
 
 ## Technical side:
-1.creating an api in java
+1. Creating an api in java
+2. Connection to an external API for retrieving movie data on-the-fly media backup
+3. Crud
+4. Progress managment
+5. Implementing PrimeNg for Angular
+6. Security Implementation (token&RefreshToken)
 
-2.connection to an external API for retrieving movie data
+## Online and functional
+1. Search Movie With Filter on Api themoviedb.org
+2. Blur Filter on Adult Content
 
-3.on-the-fly media backup
+#### (**project in progress**)
 
-4.crud
+Link:[[1]FrontEnd][linkFrontEnd]
 
-5.Implementing PrimeNg for Angular
+
+
+
+
+
+[linkFrontEnd]: http://markusemile.be/app/socialVideo/frontend/home "FronfEnd"
