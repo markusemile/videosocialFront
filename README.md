@@ -29,8 +29,11 @@
 
 #### (**project in progress**)
 - register a new user
+  
 - display movie template (add casting,crew)
+  
 - search in local
+  
 - edit template
 
 Link:[[1]FrontEnd][linkFrontEnd]
