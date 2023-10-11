@@ -1,0 +1,45 @@
+$margins: (
+  "m": "margin",
+  "mt": "margin-top",
+  "mb": "margin-bottom",
+  "ml": "margin-left",
+  "mr": "margin-right",
+);
+
+$paddings: (
+  "p": "padding",
+  "pt": "padding-top",
+  "pb": "padding-bottom",
+  "pl": "padding-left",
+  "pr": "padding-right",
+);
+
+@for $i from 1 through 6 {
+  @each $name, $margin in $margins {
+    .#{$name}-#{$i} {
+      #{$margin}: calc($i * 1rem);
+    }
+  }
+  @each $name, $padding in $paddings {
+    .#{$name}-#{$i} {
+      #{$padding}: calc($i * 1rem);
+    }
+  }
+}
+
+@for $i from 1 through 11 {
+  .w-#{$i*10} {
+    box-sizing: border-box;
+    width: calc($i * 10%);
+  }
+  .h-#{$i*10} {
+    box-sizing: border-box;
+    height: calc($i * 10%);
+  }
+}
+@for $i from 1 through 13 {
+  .col-#{$i} {
+    box-sizing: border-box;
+    width: calc(100vw / 12) * $i;
+  }
+}

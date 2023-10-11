@@ -1,0 +1,11 @@
+{
+"/api/": {
+  "target": "http://markusemile.be/myapp/socialvideo/",
+  "changeOrigin":false,
+  "logLevel": "debug",
+  "pathRewrite": {
+    "^/apis/": ""
+  }
+}
+}
+

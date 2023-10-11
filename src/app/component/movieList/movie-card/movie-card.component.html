@@ -1,0 +1,17 @@
+<div class="col-4 md:col-3 lg:col-2" *ngIf="info" (click)="displayDetail()">
+    <div class="card bg-white rounded border-0 relative" [style]="{width:'220px'}">
+      <div class="card-header">
+        <img [src]="info.poster_path" [style]="{maxWidth:'100%'}" class=""
+        [ngStyle]="{filter: (info.adult && blur) ? 'blur(0.5rem)':null}">
+      </div>
+      <div class="card-footer flex flex-column align-items-center"
+      [style]="{height:'80px',overflow:'hidden',justifyContent:'center'}">
+      <span class="text-gray-900 font-bold py-1 text-center px-1">{{info.title}}</span>
+      <span class="text-gray-900 py-2">{{info.release_date}}</span>
+    </div>
+    <div class="buttons-option absolute right-0 top-0 mt-2 mr-2" *ngIf="addButton">
+      <p-button icon="pi pi-plus " (onClick)="addMovie(info.id)"
+      styleClass="p-button-rounded p-button-success p-button-sm"></p-button>
+    </div>
+  </div>
+</div>

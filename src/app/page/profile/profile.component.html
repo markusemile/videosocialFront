@@ -1,0 +1,48 @@
+<div class="container m-5" *ngIf="form && form!==undefined && userDatas!==undefined">
+  <p-toast></p-toast>
+  <div class="row text-center mb-5">
+    <h4>Profile : (id:{{userDatas.id}}) </h4>
+  </div>
+  <div class="row">
+    <div class="col d-f-col align-center">
+      <form class="col-12 d-f-col align-center" [formGroup]="form" *ngIf="form!==undefined">
+        <div class="form-group">
+          <label htmlFor="username" class="">Username :</label>
+          <div class="input-wrapper">
+            <input id="username" class="auto" pInputText type="text" placeholder="name" formControlName="username"
+              (ngModelChange)="update('username',$event)">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="userEmail" class="">Email :</label>
+          <div class="input-wrapper">
+            <input id="userEmail" pInputText type="text" placeholder="Email" formControlName="email"
+              readonly="readonly">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="">Language :</label>
+          <div class="input-wrapper">
+            <p-treeSelect [options]="languages" formControlName="language" styleClass="w-full" [filter]="true"
+              [filterInputAutoFocus]="true" placeholder="Select a language" class="md:w-20rem w-full"
+              (ngModelChange)="update('language',$event)"></p-treeSelect>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="">Adult content:</label>
+          <div class="input-wrapper">
+            <p-selectButton #adult [options]="adultOptions" formControlName="includeAdult"
+              (ngModelChange)="update('includeAdult',$event)"></p-selectButton>
+          </div>
+        </div>
+        <div class="form-group" *ngIf="adult.value">
+          <label for="">Blur adult content:</label>
+          <div class="input-wrapper">
+            <p-selectButton [options]="blurAdultOptions" formControlName="blurAdultContent"
+              (ngModelChange)="update('blurAdultContent',$event)"></p-selectButton>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

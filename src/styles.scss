@@ -1,1 +1,33 @@
 /* You can add global styles to this file, and also import other style files */
+@import "theme.css";
+@import "primeicons/primeicons.css";
+@import "primeng/resources/primeng.css";
+@import "./assets/styles/custom-theme.css";
+//@import "./assets/styles/function.scss";
+@import "./assets/styles/position.scss";
+
+* {
+  font-family: Lato;
+}
+
+.test1 {
+  background-color: red;
+}
+.test2 {
+  background-color: rgb(234, 187, 0);
+}
+.test3 {
+  background-color: rgb(26, 117, 44);
+}
+
+.container {
+  max-width: 100%;
+}
+
+.rounded {
+  border-radius: 1rem;
+}
+.rounded-t {
+  border-top-right-radius: 1rem;
+  border-top-left-radius: 1rem;
+}

@@ -1,0 +1,25 @@
+<div class="col bg-purple-500 rounded flex sm:flex-column md:flex-row md:justify-content-center md:align-items-center">
+  <h3>Filters:</h3>
+  <form [formGroup]="form" *ngIf="form">
+    <div class="form-wrapper flex  flex-wrap lg:flex-row align-items-center">
+      <div class="form-group ml-2 flex align-items-center mx-3" *ngIf="optionsFilters && optionsFilters.query==true">
+        <input pInputText type="text" placeholder="Enter title to find" required formControlName="query"
+          (keyup.enter)="search()" class="my-1 w-75">
+        <p-button icon="pi pi-search" [disabled]="!form.valid" class="ml-1" styleClass="p-button-success" title="search"
+          (onClick)="search()"></p-button>
+        <p-button icon="pi pi-times" class="ml-1" styleClass="p-button-danger" (click)="reset()"
+          title="reset"></p-button>
+      </div>
+
+      <div class="form-group mx-3" *ngIf="optionsFilters && optionsFilters.year==true">
+        <p-treeSelect [options]="yearOptions" placeholder="By year..." formControlName="year"></p-treeSelect>
+      </div>
+
+      <div class="form-grou ml-2" *ngIf="optionsFilters && optionsFilters.source==true">
+        <p-selectButton [options]="sourceOptions" value="false" formControlName="source"
+          title="select source where search movie title"></p-selectButton>
+      </div>
+
+    </div>
+  </form>
+</div>

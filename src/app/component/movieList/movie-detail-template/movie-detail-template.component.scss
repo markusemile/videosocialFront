@@ -1,0 +1,24 @@
+
+:host ::ng-deep .p-tabview-nav-link,
+:host ::ng-deep .p-tabview-panels{
+background: transparent !important;
+}
+
+:host ::ng-deep  .p-tabview-panels{
+  padding:0 !important;
+  margin:0 !important;
+}
+
+.backdrop{
+  background-size: cover;
+  background-position: left top calc((50vh - 400px) - 100px);
+  background-repeat: no-repeat;
+  margin:0 !important;
+  padding:0 !important;
+  .backdrop-color{
+    background-color:rgba(59, 55, 52, 0.8); // a rendre  dynamic via template database
+
+  }
+
+
+}

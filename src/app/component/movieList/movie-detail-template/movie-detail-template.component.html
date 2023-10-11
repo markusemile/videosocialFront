@@ -1,0 +1,40 @@
+<div class="row content-center" [ngStyle]="{display:'flex',justifyContent:'center'}" *ngIf="details!=undefined">
+  <div class="col-12">
+    <p-tabView>
+      <p-tabPanel header="Movie details">
+       <div class="backdrop  col-12" [ngStyle]="{height: '600px',backgroundImage:'url('+details.backdrop_path+')'}">
+        <div class="backdrop-color w-full h-full">
+          <div class="flex h-full w-full">
+            <div class="col-4 align-self-center text-center">
+              <img [src]="details.poster_path"  class="rounded border-3" alt="">
+            </div>
+            <div class="col">
+              <div class="col">
+                <h1 class="mt-5 mb-0">{{details.title}} - ({{details.release_date|date:'YYYY'}})</h1>
+              </div>
+              <div class="col">
+                <span class="mt-0 ">{{genres.join(', ')}}</span><span class="mx-2">•</span><span>{{runtime}}</span>
+              </div>
+              <div class="col">
+                <h3 class="mt-4 p-0" [ngStyle]="{fontStyle:'italic',fontWeight:'normal'}">{{details.tagline}}</h3>
+              </div>
+              <div class="col-10">
+                <h2>Synopsys</h2>
+                <p>
+                  {{details.overview}}
+                </p>
+              </div>
+
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+      </p-tabPanel>
+      <p-tabPanel header="Actors"></p-tabPanel>
+      <p-tabPanel header="Crew"></p-tabPanel>
+      <p-tabPanel header="Pictures & Templating"></p-tabPanel>
+    </p-tabView>
+  </div>
+</div>
