@@ -4,8 +4,8 @@
     <div class="col">
       <h1>VideoTek</h1>
     </div>
-    <div class="col">
-      <app-movielist [page]="page" [addButton]=false [showDetail]="true"></app-movielist>
+    <div class="col" *ngIf="page">
+      <app-movielist [page]="page" [addButton]=false [showDetail]="true" (callpage)="callPage($event)"></app-movielist>
     </div>
   </div>
 </div>

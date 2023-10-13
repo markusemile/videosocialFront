@@ -33,7 +33,7 @@ export class HeaderInterceptor implements HttpInterceptor {
     }
 
     //change headers when goes to local db
-    if (req.url.startsWith("/api/user") || req.url.startsWith("/api/movie")) {
+    if (req.url.includes("/api/user") || req.url.includes("/api/movie")) {
       //  console.log(this.userData.getToken())
       headers = headers.set('Authorization', 'Bearer ' + this.userData.getToken());
     }

@@ -17,8 +17,9 @@ export class LocaldbService {
     return this.http.post<ApiResponse>(environment.dockerBack+environment.localApiPaths.saveMovie, m);
   }
 
-  getVideotek(id: string) {
-    return this.http.get<ApiResponse>(environment.dockerBack + environment.localApiPaths.getMovie + id);
+  getVideotek(id: string,p:number=0) {
+    console.log(p);
+    return this.http.get<ApiResponse>(environment.dockerBack + environment.localApiPaths.getMovie + id, {params:{'page':p}});
   }
 
   getMovieDetail(movieId: string) {

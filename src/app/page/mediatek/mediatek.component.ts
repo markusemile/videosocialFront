@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, SimpleChanges } from '@angular/core';
 import { LocaldbService } from '../../service/localdb/localdb.service';
 import { AppDataService, UserData } from 'src/app/service/appdata/app-data.service';
 import { ApiResponse } from '../../service/auth/auth.service';
@@ -13,7 +13,7 @@ import { MessageService } from 'primeng/api';
 export class MediatekComponent {
 
   page: SearchMovieResponse | any = [];
-  private userId: number | undefined;
+  private userId: string | undefined;
 
   constructor(
     private localdbService: LocaldbService,
@@ -23,10 +23,13 @@ export class MediatekComponent {
 
     const usDatas: UserData = this.userData.getUserDatas();
     const userId = usDatas?.id;
+    this.userId=userId;
 
-    this.localdbService.getVideotek(userId).subscribe((res: ApiResponse) => {
+    this.localdbService.getVideotek(this.userId).subscribe((res: ApiResponse) => {
       if (res.data) {
         let data: SearchMovieResponse = res.data;
+        data.page=0;
+        console.log(data);
         this.page = data;
       } else {
         // log to toaster message
@@ -36,12 +39,29 @@ export class MediatekComponent {
   }
 
   ngOnInit() {
+
   }
 
 
   callPage(e: number) {
+    if(this.userId!==undefined)
+    this.localdbService.getVideotek(this.userId,e).subscribe((res:ApiResponse)=>{
+    const d:SearchMovieResponse = res.data;
+    d.page++;
+    console.log(d);
+
+    this.page=d;
+
+  })
+  }
+
+  ngOnChanges(changes:SimpleChanges){
+    console.log(changes);
+
 
   }
+
+
 }
 
 export interface PaginationResponse {

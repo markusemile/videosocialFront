@@ -1,27 +1,40 @@
-# Frontend
+# VideoSocial
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.4.
+- A project including a frontend part in Angular and a backend part in Java (spring boot)
 
-## Development server
+- Application which allows you to create your video library (crud part) and share it with other members.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- Conversations around a film,
 
-## Code scaffolding
+- Search movie with filters locally and on  themoviedb.org
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- Add your own movie card if you can t find it locally or on  themoviedb.org
 
-## Build
+- Profile management
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- Monitoring of backup of film additions in the database
 
-## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Technical side:
+1. Creating an api in java
+2. Connection to an external API for retrieving movie data on-the-fly media backup
+3. Crud
+4. Progress managment
+5. Implementing PrimeNg for Angular
+6. Security Implementation (token&RefreshToken)
+7. FrontEnd and backend are dockerized.
 
-## Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Online and functional
+1. Search Movie With Filter on Api themoviedb.org
+2. Blur Filter on Adult Content
 
-## Further help
+#### (**project in progress**)
+  
+- display movie template (add casting,crew)
+  
+- search in local
+  
+- edit template
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Link:[[1]FrontEnd][linkFrontEnd]

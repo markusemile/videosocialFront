@@ -22,3 +22,10 @@ background: transparent !important;
 
 
 }
+
+@media screen and (max-height:610px)  {
+  .backdrop{
+
+      background-position: center center !important;
+    }
+}
