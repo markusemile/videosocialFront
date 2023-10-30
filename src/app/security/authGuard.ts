@@ -14,7 +14,9 @@ export class AuthGuard {
   constructor(
     private route: Router,
     private userData: AppDataService,
-  ) { }
+  ) {
+
+   }
 
 
 

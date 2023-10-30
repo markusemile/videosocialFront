@@ -3,9 +3,10 @@ import { Injectable } from '@angular/core';
 import { environment } from "src/environments/environment.development";
 import { CookieService } from 'ngx-cookie-service'
 import { AppDataService } from "../service/appdata/app-data.service";
-import { catchError, switchMap, take, throwError } from "rxjs";
-import { AuthService } from '../service/auth/auth.service';
+import { catchError, of, switchMap, take, throwError } from "rxjs";
+import { ApiResponse, AuthService } from '../service/auth/auth.service';
 import { Router } from "@angular/router";
+import { MessageService } from 'primeng/api';
 
 
 @Injectable({
@@ -14,17 +15,24 @@ import { Router } from "@angular/router";
 export class HeaderInterceptor implements HttpInterceptor {
 
 
+  refreshTokenAttempts: number = 0;
 
   constructor(
     private cookieService: CookieService,
     private userData: AppDataService,
     private authService: AuthService,
-    private route: Router) { }
+    private route: Router,
+    private messageService: MessageService) {
+
+
+
+
+  }
 
   intercept(req: HttpRequest<any>, next: HttpHandler) {
 
     let headers = new HttpHeaders();
-
+    //console.log(req);
 
 
     // change headers when goes to api external
@@ -33,18 +41,11 @@ export class HeaderInterceptor implements HttpInterceptor {
     }
 
     //change headers when goes to local db
-    if (req.url.includes("/api/user") || req.url.includes("/api/movie")) {
-      //  console.log(this.userData.getToken())
+    if (req.url.includes("api/user") || req.url.includes("api/movie") || req.url.includes("api/mediatek")) {
       headers = headers.set('Authorization', 'Bearer ' + this.userData.getToken());
     }
 
-    // console.log(req);
     const modifiedReq = req.clone({ headers });
-
-
-    let refreshTokenAttempts = 0;
-
-
 
     // manage server error/token error
     return next.handle(modifiedReq)
@@ -52,8 +53,9 @@ export class HeaderInterceptor implements HttpInterceptor {
         catchError((error: HttpErrorResponse) => {
           if (error.status == 403 && !req.url.includes('login')) {
             const rt = { "refreshToken": this.userData.getRefreshToken() }
-            if (rt && refreshTokenAttempts < 2) {
-              refreshTokenAttempts++;
+
+            if (rt && this.refreshTokenAttempts < 2) {
+              this.refreshTokenAttempts++;
               return this.authService.refreshToken(rt).pipe(
                 take(1),
                 switchMap((newTokenResponse: RefreshTokenResponse) => {
@@ -62,17 +64,25 @@ export class HeaderInterceptor implements HttpInterceptor {
                   const newHeaders = headers.set('Authorization', 'Bearer ' + this.userData.getToken());
                   const newModifiedReq = req.clone({ headers: newHeaders });
                   return next.handle(newModifiedReq);
-                }), catchError((error) => {
+                }),
+                catchError((error) => {
                   this.route.navigate(['/login']);
                   return throwError(() => error);
                 })
-              )
+              );
             }
+
           }
-          if (error.status == 504) {
-            // erreur serveur
+          if (error.status === 504) {
           }
-          return throwError(() => error);;
+
+          if (error.status === 404) {
+            const mess: ApiResponse = error.error;
+            this.messageService.add({ severity: "error", summary: "error", detail: mess.message });
+            return of();
+          }
+
+          return throwError(() => error);
         })
       );
   }

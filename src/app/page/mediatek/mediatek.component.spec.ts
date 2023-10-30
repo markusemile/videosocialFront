@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
 import { MovielistModule } from 'src/app/component/movieList/movielist.module';
+import { RouterTestingModule } from "@angular/router/testing"
 
 describe('MediatekComponent', () => {
   let component: MediatekComponent;
@@ -12,8 +13,8 @@ describe('MediatekComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientModule, ToastModule, MovielistModule],
-      declarations: [MediatekComponent],
+      imports: [HttpClientModule, ToastModule, MovielistModule,RouterTestingModule],
+declarations: [MediatekComponent],
       providers: [MessageService]
     });
     fixture = TestBed.createComponent(MediatekComponent);

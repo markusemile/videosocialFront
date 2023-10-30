@@ -17,8 +17,9 @@ export class AppDataService {
   private userDatas: UserData | any;
   private token: string = '';
   private refreshToken: string = '';
+  private history:string[]=[];
+  private maxHistory:number=10;
   connected = new BehaviorSubject<boolean>(false);
-
 
   constructor(private http: HttpClient, private cookieService: CookieService, private route: Router) {
     /**
@@ -34,7 +35,15 @@ export class AppDataService {
     }
   }
 
-
+  setHistory(url:string){
+    if(this.history.length>this.maxHistory) this.history.shift();
+    this.history.push(url);
+  }
+  getHistory(num:number){
+    const url = this.history.pop();
+    this.history.slice(0,-1);
+    return url;
+  }
 
   parseStorageUserData() {
     let d = localStorage.getItem('user');

@@ -12,6 +12,8 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { HeaderInterceptor } from './security/headerInterceptor';
 import { CookieService } from 'ngx-cookie-service';
 import { AuthGuard } from './security/authGuard';
+import { MessageService } from 'primeng/api';
+import { ToastModule } from 'primeng/toast';
 
 
 
@@ -28,12 +30,13 @@ import { AuthGuard } from './security/authGuard';
     PageModule,
     NavigationModule,
     HttpClientModule,
+    ToastModule
   ],
   providers: [
     ServiceModule,
     CookieService,
     AuthGuard,
-
+    MessageService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: HeaderInterceptor,

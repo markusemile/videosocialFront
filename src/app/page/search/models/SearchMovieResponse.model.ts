@@ -6,3 +6,8 @@ export interface SearchMovieResponse {
   total_pages: number,
   total_results: number
 }
+
+export interface SearchLocalMovieResponse {
+  pager: SearchMovieResponse,
+  movie_list:string[]
+}

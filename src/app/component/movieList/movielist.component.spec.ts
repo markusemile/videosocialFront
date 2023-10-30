@@ -4,6 +4,7 @@ import { MovielistComponent } from './movielist.component';
 import { MovieCardComponent } from './movie-card/movie-card.component';
 import { PaginatorModule } from 'primeng/paginator';
 import { ButtonModule } from 'primeng/button';
+import { RouterTestingModule } from "@angular/router/testing"
 
 describe('MovielistComponent', () => {
   let component: MovielistComponent;
@@ -13,7 +14,8 @@ describe('MovielistComponent', () => {
     TestBed.configureTestingModule({
       imports: [
         PaginatorModule,
-        ButtonModule
+        ButtonModule,
+        RouterTestingModule
       ],
       declarations: [MovielistComponent, MovieCardComponent]
     });

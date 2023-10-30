@@ -15,9 +15,11 @@ export class MovieCardComponent {
 
   @Input() info: MovieCardInfo | undefined;
   @Input() addButton: boolean = false;
+  @Input() removeButton: boolean = false;
   @Input() showDetail: boolean = false;
 
   @Output() saveMovie: EventEmitter<number> = new EventEmitter();
+  @Output() removeMovie: EventEmitter<number> = new EventEmitter();
 
 
   constructor(
@@ -35,6 +37,11 @@ export class MovieCardComponent {
   addMovie(id: number) {
 
     this.saveMovie.emit(id);
+  }
+
+  deleteMovie(e:Event,id:number){
+    e.stopPropagation();
+    this.removeMovie.emit(id);
   }
 
   displayDetail(){

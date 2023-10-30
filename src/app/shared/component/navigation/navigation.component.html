@@ -1,14 +1,14 @@
 <div class="card">
-  <p-menubar [model]="items" class="align-center">
+  <p-menubar [model]="items" class="align-center" >
     <ng-template pTemplate="start " class="wrap">
       <h4>Logo</h4>
     </ng-template>
     <ng-template pTemplate="end" class="">
       <label class="flex">
         <input #search pInputText type="text" placeholder="Search..." class="w-full" [(ngModel)]="searchValue"
-          (keyup.enter)="goSearch(search.value)">
+          (keyup.enter)="goSearch(search.value)" >
         <p-button icon="pi pi-search" class="ml-1" styleClass="p-button-success p-button-sm"
-          (click)="goSearch(search.value)"></p-button>
+          (click)="goSearch(search.value)" [disabled]="searchValue==undefined || searchValue==''"></p-button>
       </label>
     </ng-template>
 

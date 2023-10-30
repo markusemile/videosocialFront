@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { MenuItem } from 'primeng/api'
 import { AppDataService } from 'src/app/service/appdata/app-data.service';
 import { AuthService } from 'src/app/service/auth/auth.service';
+import { HttpParams } from '@angular/common/http';
 
 @Component({
   selector: 'app-navigation',
@@ -31,17 +32,16 @@ export class NavigationComponent {
     private authService: AuthService,
     private userDatas: AppDataService) {
 
-    this.getItemsMenu();
+
+
+      this.getItemsMenu();
 
   }
 
 
-
-
   goSearch(t: string) {
-    console.log(t);
-
-    this.route.navigate(['search'], { queryParams: { term: t } })
+    this.route.navigate(['/search'], { queryParams: { query: t} })
+    this.searchValue="";
   }
 
 
@@ -59,7 +59,8 @@ export class NavigationComponent {
         routerLink: "/home"
       }, {
         label: "VideoTek",
-        routerLink: "videotek"
+        routerLink: "videotek",
+        queryParams:{"page":"0"}
       }, {
         label: 'Profile',
         visible: this._logged,

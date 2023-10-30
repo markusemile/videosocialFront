@@ -4,11 +4,17 @@
     <hr>
     <div class="row" *ngIf="totalRecord">
       <div class="col-12 flex flex-row flex-wrap justify-content-center">
-          <app-movie-card *ngFor="let movie of getMovieList()" [info]="movie" [addButton]="addButton"
-          (saveMovie)="addMovie($event)" [showDetail]="showDetail"></app-movie-card>
+          <app-movie-card *ngFor="let movie of getMovieList()"
+            [info]="movie"
+            [addButton]="addButton"
+            [removeButton]="removeButton"
+            [showDetail]="showDetail"
+            (saveMovie)="addMovie($event)"
+            (removeMovie)="deleteMovie($event)"
+            ></app-movie-card>
       </div>
     </div>
-    <p-paginator #paginator (onPageChange)="onPageChange($event)" [first]="first" [rows]="rows"
+    <p-paginator #paginator (onPageChange)="onPageChange($event)" (onPage)="onPage($event)" [first]="2" [rows]="rows"
       [totalRecords]='totalRecord'></p-paginator>
   </div>
 </div>

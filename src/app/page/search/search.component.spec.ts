@@ -13,6 +13,7 @@ import { TreeSelectModule } from 'primeng/treeselect';
 import { SelectButtonModule } from 'primeng/selectbutton';
 import { MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
+import { PaginatorModule} from 'primeng/paginator'
 
 describe('SearchComponent', () => {
   let component: SearchComponent;
@@ -27,7 +28,8 @@ describe('SearchComponent', () => {
         ButtonModule,
         TreeSelectModule,
         SelectButtonModule,
-        ToastModule
+        ToastModule,
+        PaginatorModule
 
       ],
       declarations: [

@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { RefreshTokenResponse } from 'src/app/security/headerInterceptor';
 import { AppDataService, UserData } from '../appdata/app-data.service';
 import { Router } from '@angular/router';
-import { BehaviorSubject, catchError, throwError } from 'rxjs';
+import { BehaviorSubject, catchError, max, throwError } from 'rxjs';
 import { MovieCardInfo } from '../../page/search/models/MovieCardInfo.model';
 import { environment } from 'src/environments/environment.development';
 
@@ -16,14 +16,17 @@ export class AuthService {
 
   public connected = new BehaviorSubject<string>(this.userData.getToken());
 
+
   constructor(
     private http: HttpClient,
     private userData: AppDataService,
     private route: Router,
 
   ) {
-
   }
+
+
+
 
   ngAfterViewInit() {
     this.connected.asObservable().subscribe(res => {
@@ -37,7 +40,7 @@ export class AuthService {
     return this.http.post<ApiResponse>(environment.dockerBack+environment.localApiPaths.login, params).pipe(
       catchError((error) => {
         console.error(error);
-        return throwError(() => "catching error : " + console.error)
+        return throwError(() => "ERREUR !! : " + console.error)
       })
     ).subscribe((res) => {
       if (res.data && res.data.hasOwnProperty('token') && res.data.hasOwnProperty('refreshToken')) {
@@ -63,7 +66,7 @@ export class AuthService {
 
         this.route.navigate(['/videotek']);
       } else if (res.data && res.data.hasOwnProperty('status') && res.data.status === 'Error') {
-        console.error(res);
+        console.error("ERREUR : "+res);
         // modifier et mettre dans un toaster
       }
     })
@@ -103,6 +106,8 @@ export interface AuthResponse {
   refreshtoken: string,
 }
 
+
+
 export interface ErrorResponse {
   code: number,
   message: string
@@ -111,7 +116,7 @@ export interface ErrorResponse {
 export interface ApiResponse {
   time: string,
   message?: string,
-  status?: string,
+  stats: string,
   data?: AuthResponse | ErrorResponse | MovieCardInfo | any
 }
 

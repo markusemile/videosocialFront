@@ -1,10 +1,10 @@
 <div class="container">
   <p-toast></p-toast>
-  <div class="row">
-    <app-filter [query]="termToSearch" (params)="search($event)" [optionsFilters]="optionsFilters"></app-filter>
+  <div class="row" >
+    <app-filter [query]="getCurrentTermToSearch()" [optionsFilters]="optionsFilters" [source]="localSource"></app-filter>
   </div>
-  <div class="row" *ngIf="page!==undefined">
-    <app-movielist [page]="page" [design]="'card'" [title]="'Search new Movie'" (callpage)="callPage($event)"
+  <div class="row" *ngIf="pager!==undefined">
+    <app-movielist [page]="pager" [design]="'card'" [title]="'Search new Movie'" (callpage)="callPage($event)"
       [addButton]=true (saveMovie)="saveMovie($event)"></app-movielist>
   </div>
 </div>

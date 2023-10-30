@@ -27,8 +27,9 @@ export class ProfileComponent {
     private appData: AppDataService,
     private languageList: LanguagesList,
     private _fb: FormBuilder,
-    private messageService: MessageService
+    private messageService: MessageService,
   ) {
+
     this.userDatas = appData.getUserDatas();
     this.c = languageList.getAllLanguage();
     this.form = this._fb.group({
@@ -82,7 +83,7 @@ export class ProfileComponent {
 
       this.appData.updateDatas(val, e).subscribe({
         next: (n: ApiResponse) => {
-          if (n.status?.includes('SUCCESS'))
+          if (n.stats?.includes('SUCCESS'))
             this.messageService.add({ severity: "success", summary: "success", detail: n.message });
           else
             this.messageService.add({ severity: "error", summary: "error", detail: n.message });

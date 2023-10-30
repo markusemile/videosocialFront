@@ -1,4 +1,4 @@
-import { NgModule, Component } from '@angular/core';
+import { NgModule} from '@angular/core';
 import { RouterModule, Routes, mapToCanActivate } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
@@ -14,7 +14,7 @@ import { MovieDetailTemplateComponent } from '../component/movieList/movie-detai
 const routes: Routes = [
   { path: "home", component: HomeComponent },
   { path: "profile", component: ProfileComponent, canActivate: mapToCanActivate([AuthGuard]) },
-  { path: "videotek", component: MediatekComponent, canActivate: mapToCanActivate([AuthGuard]) },
+  { path: "videotek", component: MediatekComponent,canActivate: mapToCanActivate([AuthGuard])},
   { path: "videotek/movie/:id", component: MovieDetailTemplateComponent, canActivate: mapToCanActivate([AuthGuard]) },
   { path: "search", component: SearchComponent, canActivate: mapToCanActivate([AuthGuard]) },
   { path: "login", component: LoginComponent },

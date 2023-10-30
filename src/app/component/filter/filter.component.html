@@ -12,11 +12,11 @@
       </div>
 
       <div class="form-group mx-3" *ngIf="optionsFilters && optionsFilters.year==true">
-        <p-treeSelect [options]="yearOptions" placeholder="By year..." formControlName="year"></p-treeSelect>
+        <p-treeSelect #tree [options]="yearOptions" placeholder="By year..." formControlName="year"></p-treeSelect>
       </div>
 
-      <div class="form-grou ml-2" *ngIf="optionsFilters && optionsFilters.source==true">
-        <p-selectButton [options]="sourceOptions" value="false" formControlName="source"
+      <div  class="form-group ml-2" *ngIf="optionsFilters && optionsFilters.source==true">
+        <p-selectButton #sourceButton [options]="sourceOptions" value="false" formControlName="src_dta"
           title="select source where search movie title"></p-selectButton>
       </div>
 

@@ -44,7 +44,7 @@ export class RegisterComponent {
     const values = this.formgroup.value;
     this.service.register(values).subscribe({
       next: (res: ApiResponse) => {
-        if (res.status?.includes('SUCCESS')) {
+        if (res.stats?.includes('SUCCESS')) {
           this.messageService.add({ severity: "success", summary: "success", detail: res.message });
         }
       }, error: (err: Error) => {

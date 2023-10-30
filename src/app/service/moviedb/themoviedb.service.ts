@@ -33,18 +33,17 @@ export class ThemoviedbService {
     }
   }
 
-  searchMovie(elem: MdbApiOptions) {
+  searchMovie(elem: HttpParams) {
+    console.log(elem);
 
-    for(const [key,value] of Object.entries(elem)){
-     this.basicParams[key]=value;
+    if(elem.has("page") && elem.get("page")!==null){
+      const p = elem.get('page');
+      let intP=0;
+      if(p!==null) intP=parseInt(p)+1;
+      elem = elem.set('page',intP);
     }
-
-    this.initBasicParam();
-   const p = { ...this.basicParams};
-
-
-   const pString = JSON.stringify(p);
-    return this.http.get<SearchMovieResponse>(environment.mdbApiPaths.searchMovie, { params: p })
+    console.log(elem);
+    return this.http.get<SearchMovieResponse>(environment.mdbApiPaths.searchMovie, { params: elem })
   }
 
   searchMovieDetail(id: number,append_to_response?:string) {

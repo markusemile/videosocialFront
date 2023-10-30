@@ -38,6 +38,7 @@ import { MessageService } from 'primeng/api';
     LoginModule,
     ToastModule,
     LogoutModule,
+
   ],
   exports: [
   ],

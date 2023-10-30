@@ -13,5 +13,9 @@
       <p-button icon="pi pi-plus " (onClick)="addMovie(info.id)"
       styleClass="p-button-rounded p-button-success p-button-sm"></p-button>
     </div>
+    <div class="buttons-option absolute right-0 top-0 mt-2 mr-2" *ngIf="removeButton" title="remove">
+      <p-button icon="pi pi-times " (onClick)="deleteMovie($event,info.id)"
+      styleClass="p-button-rounded p-button-danger p-button-sm"></p-button>
+    </div>
   </div>
 </div>

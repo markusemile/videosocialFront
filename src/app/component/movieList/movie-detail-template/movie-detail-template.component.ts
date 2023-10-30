@@ -66,6 +66,8 @@ export class MovieDetailTemplateComponent {
 
       })
     ).subscribe(res=>{
+      console.log(res);
+
       if(res && res.data){
         this.details=res.data;
         console.log(this.details);
