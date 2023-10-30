@@ -43,4 +43,4 @@ Link:[[1]FrontEnd][linkFrontEnd]
 
 
 
-[linkFrontEnd]: http://markusemile.be/myapp/socialvideo/ "FronfEnd"
+[linkFrontEnd]: http://markusemile.be/my-app/socialvideos/ "FronfEnd"
